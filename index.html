@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cosmos</title>
+    <link rel="stylesheet" href="bootstrap_main.css">
+    <script src="bootstrap_main.js"></script>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            background-image: url("Space.jpg");
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        input[type="button"] {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        #results div {
+            margin-bottom: 10px;
+        }
+
+        #results span {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function calculate() {
+            var mass = document.getElementById("mass").value;
+            var radius = document.getElementById("radius").value;
+
+            var v, E, P, a;
+            v = parseFloat((Math.sqrt(29.8 * radius)).toFixed(2));
+            E = parseFloat((0.5 * mass).toFixed(2));
+            P = parseFloat(((0.5 * mass) / (29.8 * radius)).toFixed(2));
+            a = parseFloat(((29.8 * radius) / (radius)).toFixed(2));
+
+            document.getElementById("velocity").innerText = "Initial Velocity: " + v + " m/s";
+            document.getElementById("energy").innerText = "Required Energy: " + E + " J";
+            document.getElementById("power").innerText = "Required Power: " + P + " J";
+            document.getElementById("acceleration").innerText = "Acceleration: " + a + " m/s^2";
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Cosmos</h1>
+        <form>
+            <div class="mb-3">
+                <label for="mass" class="form-label">Mass (kg)</label>
+                <input type="text" id="mass" class="form-control" placeholder="Mass (kg)">
+            </div>
+            <div class="mb-3">
+                <label for="radius" class="form-label">Radius (m)</label>
+                <input type="text" id="radius" class="form-control" placeholder="Radius (m)">
+            </div>
+            <button type="button" class="btn btn-primary" onclick="calculate()">Calculate</button>
+            <h3 class="mt-4">Results:</h3>
+            <div id="results">
+                <div id="velocity"></div>
+                <div id="energy"></div>
+                <div id="power"></div>
+                <div id="acceleration"></div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
